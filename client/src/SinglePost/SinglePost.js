@@ -9,7 +9,7 @@ import AppLoader from "../AppLoader/AppLoader";
 import { useEffect } from "react";
 import PostComments from "./PostComments/PostComments";
 
-const SinglePost = ({match}) => {
+const SinglePost = ({ match }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -62,7 +62,7 @@ const SinglePost = ({match}) => {
                   alt={data.user.username}
                 />
                 <span
-                  className="font-weight-bold mr-2"
+                  className="font-weight-bold pl-2 pr-2"
                   title={data.user.username}
                 >
                   {data.user.username}
