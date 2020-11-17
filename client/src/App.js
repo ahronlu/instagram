@@ -38,12 +38,8 @@ function App() {
         <div className="main pl-0 pr-0 flex-grow-1">
           <div className="container mt-3">
             <Switch>
-              {!user && (
-                <>
-                  <Route path="/signup" component={Signup} />
-                  <Route path="/login" component={Login} />
-                </>
-              )}
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
               <Route path="/post/create" component={PostCreate} />
               <Route path="/profile/edit" component={ProfileEdit} />
               <Route path="/profile/:id" component={Profile} />

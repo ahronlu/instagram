@@ -28,7 +28,14 @@ const PostComment = ({ comment, deleteComment }) => {
           style={{ display: "inline-block" }}
         />
       </div>
-      {user._id === comment.user._id ? <i onClick={() => deleteComment(comment._id)} className="fas fa-trash"></i> : ""}
+      {user._id === comment.user._id ? (
+        <i
+          onClick={() => deleteComment(comment._id)}
+          className="fas fa-trash"
+        ></i>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -6,7 +6,7 @@ const SearchResultUser = ({ users }) => {
   return (
     <div className="d-flex">
       {users.map((user) => (
-        <Link to={`/users/{user.id}`} key={user.id}>
+        <Link key={user._id} to={`/profile/${user._id}`} key={user.id}>
           <User user={user} />
         </Link>
       ))}

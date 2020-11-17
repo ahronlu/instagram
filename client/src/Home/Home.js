@@ -10,9 +10,7 @@ const Home = () => {
 
   return (
     <div className="Home row">
-      <div className="col-lg-8 p-0">
-        {user && <Feed />}
-      </div>
+      <div className="col-lg-8 p-0">{user && <Feed />}</div>
       <div className="col-lg-4 p-0 pl-4 pt-4 d-none d-lg-block">
         {user && (
           <Link to={`/profile/${user._id}`}>

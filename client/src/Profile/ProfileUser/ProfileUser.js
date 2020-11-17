@@ -23,7 +23,6 @@ const ProfileUser = ({ postsCount, userId }) => {
       setProfile(data);
       setLoading(false);
     }
-
     getProfile();
   }, [userId]);
 
