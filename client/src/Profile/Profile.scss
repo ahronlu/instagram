@@ -1,0 +1,21 @@
+.Profile {
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+  .posts-grid img {
+    width: 293px;
+    height: 293px;
+  }
+
+  .Avatar {
+    margin: 0px 50px 50px 50px;
+  }
+  .details {
+    align-self: center;
+  }
+  span {
+    margin: 5px;
+  }
+}

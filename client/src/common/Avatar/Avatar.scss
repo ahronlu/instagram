@@ -1,0 +1,16 @@
+.Avatar {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  &.sm {
+    width: 32px;
+  }
+
+  &.md {
+    width: 56px;
+  }
+
+  &.lg {
+    width: 150px;
+    box-shadow: 0 0 4px 0 rgba(163, 163, 163, 1);
+  }
+}

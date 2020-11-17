@@ -1,0 +1,20 @@
+.Post {
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  background-color: #fff;
+  margin-bottom: 10px;
+
+  .medium {
+    margin: 15px;
+  }
+  .actions {
+    display: flex;
+  }
+  .actions i {
+    font-size: 25px;
+    margin: 5px;
+  }
+
+  .Avatar {
+    margin: 10px 0px 10px 15px;
+  }
+}

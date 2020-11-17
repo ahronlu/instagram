@@ -1,0 +1,13 @@
+.Home {
+  .large {
+    border: solid 0.5px rgba(var(--f52, 142, 142, 142), 1);
+    padding: 3px;
+  }
+
+  .suggestions {
+    margin-top: 20px;
+    color: rgba(var(--f52, 142, 142, 142), 1);
+    font-weight: 700;
+    font-size: 14px;
+  }
+}

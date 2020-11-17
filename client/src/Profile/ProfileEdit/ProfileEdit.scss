@@ -1,0 +1,91 @@
+@import "~bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+$shadow: 3px 3px 0px rgba(64, 64, 64, 0.4);
+$text-shadow: 0px 2px 2px rgba(64, 64, 64, 0.2);
+$primaryColor: rgba(0, 183, 214, 1);
+$hoverColor: rgba(0, 183, 214, 0.8);
+
+.ProfileEdit {
+    .cropper-container {
+        flex: 1;
+    }
+    .ProfileEdit-content {
+        height: 60vh;
+    }
+    .ProfileEdit-inputs-container {
+        flex: 1;
+        .form-group {
+            position: relative;
+            height: 60px;
+            margin-bottom: 0px;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+            .text-danger {
+                font-size: 12px;
+            }
+            .form-control {
+                padding-left: 40px;
+                box-shadow: $shadow;
+            }
+            ::placeholder {
+                color: $primaryColor;
+                font-style: italic;
+                font-size: 15px;
+            }
+            .ProfileEdit-form-icon {
+                font-size: 20px;
+                position: absolute;
+                top: 8px;
+                left: 10px;
+                color: $primaryColor;
+                &:focus {
+                    display: none;
+                }
+            }
+        }
+    }
+    .bio-counter {
+        color: $primaryColor;
+        text-shadow: $text-shadow;
+    }
+
+    .btn.btn-primary {
+        font-size: 12px;
+        background-color: $primaryColor;
+        border: 2px solid #fafafa;
+        &:hover {
+            font-size: 12px;
+            background-color: $hoverColor;
+            border: 2px solid #fafafa;
+        }
+        &:focus {
+            border: 2px solid #fafafa;
+            background-color: $primaryColor;
+            outline: none;
+            outline-offset: none;
+        }
+    }
+}
+
+.btn-primary.btn-edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    background-color: $primaryColor;
+    border: 2px solid #fafafa;
+    transition: 0.3s;
+    &:hover {
+        font-size: 12px;
+        background-color: $hoverColor;
+        border: 2px solid #fafafa;
+    }
+    &:focus {
+        border: 2px solid #fafafa;
+        background-color: $primaryColor;
+        outline: none;
+        outline-offset: none;
+    }
+}

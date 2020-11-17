@@ -1,0 +1,38 @@
+.Login {
+  display: flex;
+  justify-content: center;
+
+  .column > div {
+    background: #fff;
+    border: solid 1px #dbdbdb;
+    width: 350px;
+    margin: 10px;
+    padding: 40px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  input {
+    background: #fafafa;
+    border: 1px solid rgba(219, 219, 219, 1);
+    border-radius: 3px;
+    font-size: 13px;
+  }
+
+  .error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+
+  .logo {
+    margin: 0 auto 35px;
+  }
+
+  .signup {
+    a {
+      color: #0095f6 !important;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.CommentCreate {
+  input {
+    width: 85%;
+    border: 0;
+    outline: none;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  button {
+    color: #0095f6;
+    border: 0;
+    background: none;
+    outline: none;
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+}

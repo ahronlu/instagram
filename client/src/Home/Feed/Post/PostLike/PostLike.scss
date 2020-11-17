@@ -1,0 +1,12 @@
+.PostLike {
+  span {
+    display: block;
+  }
+  &__heart {
+    font-size: 25px;
+
+    &--liked {
+      color: #f54555;
+    }
+  }
+}

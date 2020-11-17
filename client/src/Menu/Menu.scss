@@ -1,0 +1,28 @@
+.Menu {
+  // position: sticky !important;
+  height: 60px;
+  .instagram {
+    width: 103px;
+    height: 29px;
+  }
+
+  a {
+    margin: 0 5px;
+    padding: 0;
+    font-size: 22px;
+    transition: 0.1s all ease-in-out;
+  }
+  a:hover {
+    opacity: 0.9;
+    color: black;
+  }
+  a:active {
+    opacity: 0.6;
+  }
+
+  .Menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

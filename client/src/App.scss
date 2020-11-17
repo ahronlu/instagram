@@ -1,0 +1,43 @@
+@import "~bootstrap";
+* {
+  margin: 0;
+  padding: 0;
+  // box-sizing: border-box;
+}
+
+.main {
+  overflow-y: auto;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: "Roboto";
+  color: #333333;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.primary {
+  background: #0095f6 !important;
+  color: white;
+}
+
+.btn {
+  // background: #8e24aa !important;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  // box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  //   0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.container {
+  max-width: 935px;
+}
+
+a:hover {
+  text-decoration: none;
+}
