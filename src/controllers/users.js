@@ -189,6 +189,63 @@ class Users {
       res.status(500).json(err);
     }
   }
+
+  async follow(req, res) {
+    try {
+      await User.findOneAndUpdate(
+        {
+          _id: req.params.id,
+        },
+        {
+          $addToSet: {
+            followers: req.user._id,
+          },
+        },
+        {
+          new: true,
+        }
+      );
+      await User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { $addToSet: { following: req.params.id } },
+        { new: true }
+      );
+      res.sendStatus(201);
+    } catch (err) {
+      res.status(500).json(err);
+      console.error(err);
+    }
+  }
+
+  async unfollow(req, res) {
+    if (req.user._id.toString() !== req.params.userId) {
+      res.sendStatus(403);
+      return;
+    }
+    try {
+      await User.findOneAndUpdate(
+        {
+          _id: req.params.id,
+        },
+        {
+          $pull: {
+            followers: req.user._id,
+          },
+        },
+        {
+          new: true,
+        }
+      );
+      await User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { $pull: { following: req.params.id } },
+        { new: true }
+      );
+      res.sendStatus(200);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
 }
 
 module.exports = new Users();

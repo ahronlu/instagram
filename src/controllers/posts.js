@@ -48,8 +48,10 @@ class Posts {
 
   async getPost(req, res) {
     try {
-      const post = await Post.findById(req.params.id)
-        .populate("user", ["avatar", "username"]);
+      const post = await Post.findById(req.params.id).populate("user", [
+        "avatar",
+        "username",
+      ]);
       res.json(post);
     } catch (err) {
       console.error(err);
@@ -70,7 +72,7 @@ class Posts {
         },
         {
           new: true,
-        },
+        }
       );
       res.json(post);
     } catch (err) {
@@ -95,7 +97,7 @@ class Posts {
         },
         {
           new: true,
-        },
+        }
       );
       res.json(post);
     } catch (err) {

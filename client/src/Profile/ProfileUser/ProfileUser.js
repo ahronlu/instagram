@@ -8,8 +8,11 @@ const ProfileUser = ({ postsCount, userId }) => {
   const { user } = useContext(UserContext);
   const [profile, setProfile] = useState({});
   const [postCount, setPostCount] = useState(null);
-  const isProfileOwner = user._id === userId;
   const [loading, setLoading] = useState(true);
+  const [isFollowed, setIsFollowed] = useState(false);
+  const [followers, setFollowers] = useState([]);
+
+  const isProfileOwner = user._id === userId;
 
   useEffect(() => {
     if (postsCount) {
@@ -22,9 +25,29 @@ const ProfileUser = ({ postsCount, userId }) => {
       const { data } = await axios(`/users/${userId}`);
       setProfile(data);
       setLoading(false);
+      setIsFollowed(data.followers.some((id) => id === user._id));
+      setFollowers(data.followers);
     }
     getProfile();
-  }, [userId]);
+  }, [userId, user]);
+
+  const follow = async () => {
+    try {
+      if (isFollowed) {
+        await axios.delete(`/users/${userId}/unfollow/${user._id}`);
+        setIsFollowed(false);
+        setFollowers(followers.filter((id) => id === userId));
+      } else {
+        await axios.post(`/users/${userId}/follow`, {
+          useCredentials: true,
+        });
+        setIsFollowed(true);
+        setFollowers([...followers, userId]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="d-flex">
@@ -33,22 +56,28 @@ const ProfileUser = ({ postsCount, userId }) => {
           <Avatar size="lg" image={profile.avatar} />
           <div>
             <div>
-              <h2 style={{ display: "inline-block" }} className="display-5">
-                {profile.username}
-              </h2>
-              {isProfileOwner ? (
-                <Link className="btn btn-primary" to="/profile/edit">
-                  Edit Profile
-                </Link>
-              ) : (
-                <button className="btn primary text-white">Follow</button>
-              )}
-
+              <div className="d-flex align-items-center">
+                <h2
+                  style={{ display: "inline-block" }}
+                  className="display-5 mr-3"
+                >
+                  {profile.username}
+                </h2>
+                {isProfileOwner ? (
+                  <Link className="btn btn-outline-dark" to="/profile/edit">
+                    Edit Profile
+                  </Link>
+                ) : (
+                  <button className="btn btn-outline-dark" onClick={follow}>
+                    {isFollowed ? "Unfollow" : "Follow"}
+                  </button>
+                )}
+              </div>
               <p>{profile.bio}</p>
             </div>
             <span>{postCount ? postCount : 0} posts</span>
-            {/* <span>{profile.followers.length} followers</span>
-            <span>{profile.following.length} following</span> */}
+            <span>{followers.length} followers</span>
+            <span>{profile.following.length} following</span>
           </div>
         </>
       )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Menu from "./Menu/Menu";
 import { Switch, Route, useHistory } from "react-router-dom";
+import Menu from "./Menu/Menu";
 import Signup from "./Signup/Signup";
 import Login from "./Login/Login";
 import PostCreate from "./PostCreate/PostCreate";

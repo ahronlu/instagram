@@ -21,12 +21,15 @@ const Search = () => {
       setLoading(false);
     }
 
-    searchUsers();
+    const timer = setTimeout(searchUsers, 1000);
+
+    return () => clearTimeout(timer);
   }, [query]);
   return (
     <div>
       <input
         type="text"
+        placeholder="Find users"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

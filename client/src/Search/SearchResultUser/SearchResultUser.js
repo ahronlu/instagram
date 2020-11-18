@@ -5,8 +5,8 @@ import User from "./User/User";
 const SearchResultUser = ({ users }) => {
   return (
     <div className="d-flex">
-      {users.map((user) => (
-        <Link key={user._id} to={`/profile/${user._id}`} key={user.id}>
+      {users.map((user, i) => (
+        <Link to={`/profile/${user._id}`} key={user._id}>
           <User user={user} />
         </Link>
       ))}

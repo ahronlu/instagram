@@ -20,13 +20,16 @@ const Post = ({ data, deletePost }) => {
               image={data.user.avatar}
               alt={data.user.username}
             />
-            <span className="font-weight-bold pl-2" title={data.user.username}>
+            <span
+              className="font-weight-bold pl-2 pr-3"
+              title={data.user.username}
+            >
               {data.user.username}
             </span>
           </Link>
           {data.user._id === user._id && (
             <button
-              className="btn btn-danger"
+              className="btn btn-outline-danger"
               onClick={() => deletePost(data._id)}
             >
               Remove

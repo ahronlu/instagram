@@ -31,6 +31,8 @@ routes.get("/users/me", auth, users.me);
 routes.post("/users/:id", auth, upload.single("avatar"), users.editUser);
 routes.get("/users/:id", users.getUser);
 routes.get("/users/:id/posts", users.getPosts);
+routes.post("/users/:id/follow", auth, users.follow);
+routes.delete("/users/:id/unfollow/:userId", auth, users.unfollow);
 
 routes.get("/posts", posts.getAll);
 routes.get("/posts/:id", posts.getPost);
