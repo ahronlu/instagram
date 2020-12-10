@@ -122,71 +122,18 @@ class Users {
     }
   }
 
-  async editUser(req, res) {
-    const id = req.params.id;
-    const queryOptions = {
-      upsert: true,
-      omitUndefined: true,
-      new: true,
-    };
-    let updatedValues = {
-      fullName: req.body.fullName,
-      bio: req.body.bio,
-    };
-
-    if (!id && !updatedValues) {
-      res.sendStatus(400);
-      return;
-    }
-    if (req.user._id != id) {
-      res.sendStatus(403);
-      return;
-    }
-    if (req.body.avatar) {
-      const base64Data = req.body.avatar.split(";base64,").pop();
-      const avatarName = makeUniqueImageName();
-      updatedValues.avatar = avatarName;
-      fs.writeFile(
-        "public/avatars/" + avatarName,
-        base64Data,
-        "base64",
-        (err) => {
-          if (err) console.log(err);
-        }
-      );
-    }
+  async updateUser(req, res) {
     try {
-      let updatedUser = await User.findByIdAndUpdate(
-        id,
-        updatedValues,
-        queryOptions
-      ).select(["_id", "fullName", "username", "bio", "avatar", "createdAt"]);
-      if (!updatedUser) {
-        res.sendStatus(401);
-        return;
-      }
-      res.json(updatedUser);
-    } catch (err) {
-      console.log(err);
-      res.status(400).json(err);
-    }
-  }
-
-  async update(req, res) {
-    try {
-      const user = User.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          bio: req.body.bio,
-        },
-        {
-          new: true,
-        }
-      );
+      const user = await User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { bio: req.body.bio },
+        { new: true }
+      ).select(["username", "avatar", "bio", "following", "followers"]);
 
       res.json(user);
     } catch (err) {
       res.status(500).json(err);
+      console.log(err);
     }
   }
 

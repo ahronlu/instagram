@@ -28,7 +28,7 @@ routes.get("/users/check", users.check);
 routes.post("/users/login", users.login);
 routes.get("/users/logout", users.logout);
 routes.get("/users/me", auth, users.me);
-routes.post("/users/:id", auth, upload.single("avatar"), users.editUser);
+routes.post("/users", auth, upload.single("avatar"), users.updateUser);
 routes.get("/users/:id", users.getUser);
 routes.get("/users/:id/posts", users.getPosts);
 routes.post("/users/:id/follow", auth, users.follow);

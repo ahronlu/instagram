@@ -9,11 +9,13 @@ const Profile = (props) => {
   const { id } = props.match.params;
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [postCount, setPostCount] = useState(0);
 
   useEffect(() => {
     async function getPosts() {
       const { data } = await axios(`/users/${id}/posts`);
       setPosts(data);
+      setPostCount(data.length);
       setLoading(false);
     }
 
@@ -26,7 +28,7 @@ const Profile = (props) => {
         <AppLoader />
       ) : (
         <div className="Profile">
-          <ProfileUser postsCount={posts.length} userId={id} />
+          <ProfileUser postCount={postCount} userId={id} />
           <div className="posts-grid">
             {posts.map((post) => (
               <Link to={`/post/${post._id}`} key={post._id}>
