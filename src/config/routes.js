@@ -4,6 +4,11 @@ const users = require("../controllers/users");
 const posts = require("../controllers/posts");
 const auth = require("../middlewares/auth");
 const comments = require("../controllers/comments");
+const {
+  registerValidationRules,
+  loginValidationRules,
+  validate,
+} = require("../utils/validator");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -23,9 +28,9 @@ const upload = multer({
 const routes = express.Router();
 
 routes.get("/users", users.getAll);
-routes.put("/users", users.create);
+routes.put("/users", registerValidationRules(), validate, users.create);
 routes.get("/users/check", users.check);
-routes.post("/users/login", users.login);
+routes.post("/users/login", loginValidationRules(), validate, users.login);
 routes.get("/users/logout", users.logout);
 routes.get("/users/me", auth, users.me);
 routes.post("/users", auth, upload.single("avatar"), users.updateUser);
