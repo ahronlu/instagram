@@ -60,6 +60,13 @@ class Users {
   }
 
   async create(req, res) {
+    const { username, password } = req.body;
+
+    if (!username && !password) {
+      res.sendStatus(400);
+      return;
+    }
+    
     const newUser = new User(req.body);
     newUser.password = md5(newUser.password);
     try {
@@ -75,6 +82,13 @@ class Users {
   }
 
   async login(req, res) {
+    const { username, password } = req.body;
+
+    if (!username && !password) {
+      res.sendStatus(400);
+      return;
+    }
+    
     try {
       const user = await User.findOne({
         username: req.body.username,
