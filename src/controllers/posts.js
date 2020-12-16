@@ -2,7 +2,7 @@ const Post = require("../models/post");
 
 class Posts {
   async create(req, res) {
-    if (!req.body.description) return res.sendStatus(400);
+    if (!req.body.description || req.file) return res.sendStatus(400);
 
     const post = new Post({
       user: req.user._id,
