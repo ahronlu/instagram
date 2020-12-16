@@ -1,9 +1,9 @@
 const Post = require("../models/post");
-const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Types;
 
 class Posts {
   async create(req, res) {
+    if (!req.body.description) return res.sendStatus(400);
+
     const post = new Post({
       user: req.user._id,
       image: req.file.filename,

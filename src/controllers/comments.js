@@ -4,6 +4,8 @@ const { ObjectId } = mongoose.Types;
 
 class Comments {
   async create(req, res) {
+    if (!req.body.content) return res.sendStatus(400);
+
     const comment = new Comment({
       user: req.user._id,
       postId: req.params.id,
@@ -37,10 +39,10 @@ class Comments {
 
   async get(req, res) {
     try {
-      const comments = await Comment.find().populate(
-        "user",
-        ["avatar", "username"],
-      );
+      const comments = await Comment.find().populate("user", [
+        "avatar",
+        "username",
+      ]);
       res.json(comments);
     } catch (err) {
       console.error(err);
